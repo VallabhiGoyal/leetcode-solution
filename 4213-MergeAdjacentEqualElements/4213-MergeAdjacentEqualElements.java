@@ -1,0 +1,17 @@
+// Last updated: 4/24/2026, 10:29:45 AM
+class Solution {
+    public List<Long> mergeAdjacent(int[] nums) {
+        List<Long> stack = new ArrayList<>();
+
+        for(int num : nums){
+            long curr = num;
+
+            while(!stack.isEmpty() && stack.get(stack.size()-1) == curr){
+                curr += stack.remove(stack.size()-1);
+            }
+            stack.add(curr);
+        }
+
+        return stack;
+    }
+}
