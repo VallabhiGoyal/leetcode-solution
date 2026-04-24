@@ -1,0 +1,12 @@
+// Last updated: 4/24/2026, 10:29:27 AM
+class Solution {
+    public int firstMatchingIndex(String s) {
+        int n = s.length();
+
+        for(int i = 0; i<=n/2; i++){
+            if(s.charAt(i) == s.charAt(n-i-1)) return i;
+        }
+
+        return -1;
+    }
+}
