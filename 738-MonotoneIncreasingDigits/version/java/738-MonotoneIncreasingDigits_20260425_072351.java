@@ -29,7 +29,6 @@
 15        for(int i = mark; i<m; i++){
 16            digit[i] = '9';
 17        }
-18        System.out.println(Arrays.toString(digit));
 19
 20        int ans = 0;
 21        for(int i = 0; i<m; i++){
