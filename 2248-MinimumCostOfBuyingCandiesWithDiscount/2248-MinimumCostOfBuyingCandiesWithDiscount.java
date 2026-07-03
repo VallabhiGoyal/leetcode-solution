@@ -1,0 +1,18 @@
+// Last updated: 7/3/2026, 11:37:20 AM
+class Solution {
+    public int minimumCost(int[] cost) {
+        int n = cost.length;
+
+        Arrays.sort(cost);
+
+        int totalCost = 0;
+
+        for(int i = n-1; i>=0; i-=3){
+            totalCost += cost[i];
+
+            if(i-1 >= 0) totalCost += cost[i-1];
+        }
+
+        return totalCost;
+    }
+}
