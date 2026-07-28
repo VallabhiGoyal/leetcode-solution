@@ -1,0 +1,65 @@
+// Last updated: 7/28/2026, 4:21:39 PM
+1class Solution {
+2    public boolean isBipartite(int[][] graph) {
+3        int n = graph.length;
+4
+5        int[] color = new int[n];
+6        for(int i = 0; i<n; i++){
+7            color[i] = -1;
+8        }
+9
+10        Stack<Integer> stack = new Stack<>();
+11        stack.push(0);
+12        color[0] = 0;
+13
+14        while(!stack.isEmpty()){
+15            int curr = stack.pop();
+16            int currColor = color[curr];
+17
+18            int len = graph[curr].length;
+19
+20            for(int i = 0; i < len; i++){
+21                if(currColor == 0){
+22                    if(color[graph[curr][i]] == -1){
+23                        color[graph[curr][i]] = 1;
+24                        stack.push(graph[curr][i]);
+25                    }else if(color[graph[curr][i]] == 0) return false;
+26                }else{
+27                    if(color[graph[curr][i]] == -1){
+28                        color[graph[curr][i]] = 0;
+29                        stack.push(graph[curr][i]);
+30                    }else if(color[graph[curr][i]] == 1) return false;
+31                }
+32            }
+33        }
+34
+35        for(int j = 0; j < n; j++){
+36            if(color[j] == -1){
+37                stack.push(j);
+38
+39                while(!stack.isEmpty()){
+40            int curr = stack.pop();
+41            int currColor = color[curr];
+42
+43            int len = graph[curr].length;
+44
+45            for(int i = 0; i < len; i++){
+46                if(currColor == 0){
+47                    if(color[graph[curr][i]] == -1){
+48                        color[graph[curr][i]] = 1;
+49                        stack.push(graph[curr][i]);
+50                    }else if(color[graph[curr][i]] == 0) return false;
+51                }else{
+52                    if(color[graph[curr][i]] == -1){
+53                        color[graph[curr][i]] = 0;
+54                        stack.push(graph[curr][i]);
+55                    }else if(color[graph[curr][i]] == 1) return false;
+56                }
+57            }
+58        }
+59            }
+60        }
+61
+62        return true;
+63    }
+64}
